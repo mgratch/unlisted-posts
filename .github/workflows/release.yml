@@ -35,7 +35,7 @@ jobs:
           curl -sSLO https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
           chmod +x wp-cli.phar
           sudo mv wp-cli.phar /usr/local/bin/wp
-          wp package install wp-cli/dist-archive-command
+          wp package install wp-cli/dist-archive-command:@stable
 
       - name: Create distribution archive
         run: wp dist-archive . "${{ github.workspace }}/unlisted-posts.zip" --plugin-dirname=unlisted-posts

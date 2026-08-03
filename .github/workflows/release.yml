@@ -23,11 +23,22 @@ jobs:
       - name: Install JS dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build assets
         run: npm run build
 
-      - name: Create plugin zip
-        run: npm run plugin-zip
+      # No production Composer dependencies exist (composer.json requires
+      # PHP only); if any are ever added, run `composer install --no-dev`
+      # here and remove "vendor" from .distignore.
+
+      - name: Install WP-CLI and dist-archive command
+        run: |
+          curl -sSLO https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+          chmod +x wp-cli.phar
+          sudo mv wp-cli.phar /usr/local/bin/wp
+          wp package install wp-cli/dist-archive-command
+
+      - name: Create distribution archive
+        run: wp dist-archive . "${{ github.workspace }}/unlisted-posts.zip" --plugin-dirname=unlisted-posts
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2

@@ -1,0 +1,34 @@
+# Everything not required to RUN the plugin is excluded from the
+# distribution archive built by `wp dist-archive`.
+
+# VCS / meta
+.git
+.github
+.gitignore
+.gitattributes
+.distignore
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+
+# Sources & tooling (built output ships in build/)
+src
+node_modules
+package.json
+package-lock.json
+phpcs.xml.dist
+
+# Composer — no production dependencies; require is PHP only and the
+# plugin has its own autoloader. If runtime deps are ever added, remove
+# "vendor" from this list and run `composer install --no-dev` before
+# archiving.
+vendor
+composer.json
+composer.lock
+
+# Repo docs (readme.txt is the canonical plugin readme)
+README.md
+
+# Artifacts
+*.zip

@@ -41,7 +41,16 @@ composer lint
 
 ## Releases
 
-Pushing a tag like `v1.2.3` triggers the GitHub Actions release workflow, which builds the JS, assembles a distributable `unlisted-posts.zip` (source `src/` and dev files excluded, `build/` included), and attaches it to a GitHub Release. Install that zip via **Plugins → Add New → Upload Plugin**.
+Pushing a tag like `v1.2.3` triggers the GitHub Actions release workflow, which builds the JS with `@wordpress/scripts` and packages the plugin with [`wp dist-archive`](https://developer.wordpress.org/cli/commands/dist-archive/). Exclusions are controlled by [.distignore](.distignore) — only runtime files ship (`build/` included; `src/`, configs, and dev tooling excluded). The resulting `unlisted-posts.zip` is attached to a GitHub Release; install it via **Plugins → Add New → Upload Plugin**.
+
+There are currently no production Composer dependencies (`composer.json` requires PHP only), so no `vendor/` directory ships; the plugin autoloads its own classes. If runtime dependencies are ever added, run `composer install --no-dev` during the release build and remove `vendor` from `.distignore`.
+
+To build a zip locally:
+
+```bash
+npm run build
+wp dist-archive . ./unlisted-posts.zip --plugin-dirname=unlisted-posts
+```
 
 ## Development
 

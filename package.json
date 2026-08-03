@@ -5,21 +5,11 @@
 	"author": "Marc Gratch",
 	"license": "GPL-2.0-or-later",
 	"private": true,
-	"files": [
-		"unlisted-posts.php",
-		"uninstall.php",
-		"includes",
-		"build",
-		"readme.txt",
-		"README.md",
-		"LICENSE"
-	],
 	"scripts": {
 		"build": "wp-scripts build src/editor.js src/quick-edit.js src/classic-editor.js",
 		"start": "wp-scripts start src/editor.js src/quick-edit.js src/classic-editor.js",
 		"lint:js": "wp-scripts lint-js src",
-		"format": "wp-scripts format src",
-		"plugin-zip": "wp-scripts plugin-zip"
+		"format": "wp-scripts format src"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^30.7.0",

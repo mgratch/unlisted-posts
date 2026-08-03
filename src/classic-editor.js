@@ -14,7 +14,10 @@ function init() {
 	}
 
 	if ( ! select.querySelector( `option[value="${ STATUS }"]` ) ) {
-		select.add( new Option( LABEL, STATUS ) );
+		const option = document.createElement( 'option' );
+		option.value = STATUS;
+		option.textContent = LABEL;
+		select.add( option );
 	}
 
 	if ( config.isUnlisted ) {

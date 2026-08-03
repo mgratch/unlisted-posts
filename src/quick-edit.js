@@ -15,7 +15,10 @@ function addStatusOption( select ) {
 		return;
 	}
 
-	select.add( new Option( LABEL, STATUS ) );
+	const option = document.createElement( 'option' );
+	option.value = STATUS;
+	option.textContent = LABEL;
+	select.add( option );
 }
 
 function init() {

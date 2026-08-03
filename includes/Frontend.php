@@ -19,6 +19,8 @@ final class Frontend {
 
 	/**
 	 * Post ID currently being served via its hash URL, or 0.
+	 *
+	 * @var int
 	 */
 	private int $serving = 0;
 

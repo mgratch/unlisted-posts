@@ -38,14 +38,14 @@ if ( is_readable( DIR . 'vendor/autoload.php' ) ) {
 	require DIR . 'vendor/autoload.php';
 } else {
 	spl_autoload_register(
-		static function ( string $class ): void {
+		static function ( string $class_name ): void {
 			$prefix = __NAMESPACE__ . '\\';
 
-			if ( ! str_starts_with( $class, $prefix ) ) {
+			if ( ! str_starts_with( $class_name, $prefix ) ) {
 				return;
 			}
 
-			$relative = substr( $class, strlen( $prefix ) );
+			$relative = substr( $class_name, strlen( $prefix ) );
 			$path     = DIR . 'includes/' . str_replace( '\\', '/', $relative ) . '.php';
 
 			if ( is_readable( $path ) ) {

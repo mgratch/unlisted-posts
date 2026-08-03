@@ -76,6 +76,8 @@ final class PostStatus {
 
 	/**
 	 * Get the stored hash for a post.
+	 *
+	 * @param int $post_id Post ID.
 	 */
 	public static function get_hash( int $post_id ): string {
 		return (string) get_post_meta( $post_id, Plugin::META_KEY, true );
@@ -98,6 +100,8 @@ final class PostStatus {
 
 	/**
 	 * Find the post ID for a given hash.
+	 *
+	 * @param string $hash The hash to look up.
 	 */
 	public static function find_post( string $hash ): int {
 		if ( '' === $hash || ! ctype_xdigit( $hash ) ) {

@@ -81,6 +81,8 @@ final class Plugin {
 
 	/**
 	 * Whether a post type supports the unlisted status.
+	 *
+	 * @param string $post_type Post type name.
 	 */
 	public static function supports( string $post_type ): bool {
 		return in_array( $post_type, self::post_types(), true );

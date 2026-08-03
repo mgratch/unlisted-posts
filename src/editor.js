@@ -75,7 +75,10 @@ function UnlistedPostStatusInfo() {
 							__next40pxDefaultSize
 							variant="secondary"
 							ref={ copyRef }
-							style={ { width: '100%', justifyContent: 'center' } }
+							style={ {
+								width: '100%',
+								justifyContent: 'center',
+							} }
 						>
 							{ __( 'Copy unlisted link', 'unlisted-posts' ) }
 						</Button>

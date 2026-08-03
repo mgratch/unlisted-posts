@@ -1,0 +1,15 @@
+# Build output — generated on deploy, never committed.
+/build/
+
+# Dependencies
+/node_modules/
+/vendor/
+
+# Release artifacts
+*.zip
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

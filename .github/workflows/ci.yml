@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    name: Lint & build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install JS dependencies
+        run: npm ci
+
+      - name: Lint JS
+        run: npm run lint:js
+
+      - name: Build
+        run: npm run build
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: none
+
+      - name: PHP syntax check
+        run: |
+          find . -name '*.php' -not -path './node_modules/*' -not -path './vendor/*' -print0 \
+            | xargs -0 -n1 php -l
+
+      - name: Install PHP dev dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: PHPCS
+        run: composer lint

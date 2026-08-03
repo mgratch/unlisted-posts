@@ -1,0 +1,27 @@
+{
+	"name": "unlisted-posts",
+	"version": "1.0.0",
+	"description": "Adds an \"Unlisted\" post status — content is reachable only via a private, non-crawlable random hash URL.",
+	"author": "Marc Gratch",
+	"license": "GPL-2.0-or-later",
+	"private": true,
+	"files": [
+		"unlisted-posts.php",
+		"uninstall.php",
+		"includes",
+		"build",
+		"readme.txt",
+		"README.md",
+		"LICENSE"
+	],
+	"scripts": {
+		"build": "wp-scripts build src/editor.js src/quick-edit.js src/classic-editor.js",
+		"start": "wp-scripts start src/editor.js src/quick-edit.js src/classic-editor.js",
+		"lint:js": "wp-scripts lint-js src",
+		"format": "wp-scripts format src",
+		"plugin-zip": "wp-scripts plugin-zip"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^30.7.0"
+	}
+}
